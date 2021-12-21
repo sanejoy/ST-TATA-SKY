@@ -30,11 +30,11 @@ jobs:
       run: |
             git config --global user.name "${{ github.event.inputs.git_id }}"
             git config --global user.email "${{ github.event.inputs.git_mail }}"
-            git clone hhttps://github.com/Sanju2105/sneh-tatasky
+            git clone https://gitlab.com/techiesneh/sneh-tatasky
             cd sneh-tatasky/
             cd code_samples/
             sudo apt install expect -y
-            wget https://gist.github.com/Sanju2105/03eeaa54e8b1fd9eb31158ea4e69c8f8/raw/TSlogin.exp
+            wget https://gitlab.com/-/snippets/2218535/raw/main/TSlogin.exp
             chmod 777 TSlogin.exp
             sed -i 's/PASSWORD/${{ github.event.inputs.tata_pass }}/g' TSlogin.exp
             sed -i 's/SUB_ID/${{ github.event.inputs.sub_id }}/g' TSlogin.exp
@@ -45,13 +45,13 @@ jobs:
             gh auth login --with-token < mytoken.txt
             mkdir git-repo/
             cd git-repo/
-            touch myPlaylist.m3u
-            echo "Initial Test" >> myPlaylist.m3u
-            gh gist create myPlaylist.m3u | tee gist_link.txt
+            touch mytatasky.m3u
+            echo "Initial Test" >> mytatasky.m3u
+            gh gist create mytatasky.m3u | tee gist_link.txt
             sed -i 's/gist/${{ github.event.inputs.git_token }}@gist/g' gist_link.txt
             gist_url=$(cat gist_link.txt)
             dir="${gist_url##*/}"
-            git clone https://github.com/Sanju2105/sneh-tatasky
+            git clone https://gitlab.com/techiesneh/sneh-tatasky
             gh repo create MyTataSky-Daily --private -y || echo "New repo has been created"
             mv ../TSlogin.exp sneh-tatasky/code_samples/
             chmod 755 sneh-tatasky/code_samples/TSlogin.exp
@@ -60,8 +60,8 @@ jobs:
             cd .github
             mkdir workflows
             cd workflows
-            wget https://gist.github.com/Sanju2105/860076d956c9250438acb423711ef661/raw/TSDailyWF.yml
-            wget https://gist.github.com/Sanju2105/fbe1ecbd1758fca86b6ad99114ea0e55/raw/TSaddon.txt
+            wget https://gitlab.com/-/snippets/2218538/raw/main/TSDailyWF.yml
+            wget https://gitlab.com/-/snippets/2218537/raw/main/TSaddon.txt
             export dir=$dir
             export gist_url=$gist_url
             export git_id=${{ github.event.inputs.git_id }}
@@ -79,7 +79,7 @@ jobs:
             mv sneh-tatasky/.github MyTataSky-Daily/
             cd MyTataSky-Daily/
             git add .
-            git commit --author="ST<st21051989@gmail.com>" -m "Update Repo"
+            git commit --author="TechieSneh<techiesneh@gmail.com>" -m "Update Repo"
             git push
 
 
