@@ -79,7 +79,7 @@ jobs:
             mv sneh-tatasky/.github MyTataSky-Daily/
             cd MyTataSky-Daily/
             git add .
-            git commit --author="TechieSneh<techiesneh@gmail.com>" -m "Update Repo"
+            git commit --author="ST<st21051989@gmail.com>" -m "Update Repo"
             git push
 
 
